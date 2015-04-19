@@ -12,7 +12,7 @@
 ## from the cache.
 
 ## In order to achieve this goal, a helper function needed:
-##                       makeMatrix
+##                       makeCacheMatrix
 ## will create a special "matrix" which is really a list 
 ## containing a function to:
 ## set the value of the matrix
@@ -21,7 +21,7 @@
 ## get the value of inverse
 ## (just like in the example problem)
 
-makeMatrix <- function(x = matrix()) {
+makeCacheMatrix <- function(x = matrix()) {
 
         # set to NULL when makeMatrix is called
         inv <- NULL
@@ -48,11 +48,11 @@ makeMatrix <- function(x = matrix()) {
              getinverse = getinverse)	
 }
 
-##        cacheINV
+##        cacheSolve
 ## function follows the example format as well.
 ## It will return an inverse of the input matrix
 
-cacheINV <- function(x, ...) {
+cacheSolve <- function(x, ...) {
         
         # Was the inverse computed already?
         inv <- x$getinverse()  
@@ -90,11 +90,11 @@ cacheINV <- function(x, ...) {
 
 ## (In other cases the elements mighht be different)
 
-## Next, let us prepare a list of functions M using makeMatrix()
-## > M <- makeMatrix(x)
+## Next, let us prepare a list of functions M using makeCacheMatrix()
+## > M <- makeCacheMatrix(x)
 
 ## And calculate the inverse of the initial matrix:
-## > invM <- cacheINV(M)
+## > invM <- cacheSolve(M)
 ## > invM
 ##           [,1]       [,2]        [,3]
 ## [1,]  1.320040 -0.4304724  0.04486633
@@ -109,7 +109,7 @@ cacheINV <- function(x, ...) {
 ## [3,] TRUE TRUE TRUE
 
 ## Now let us compute the inverse again:
-## > invM <- cacheINV(M)
+## > invM <- cacheSolve(M)
 ## Getting cached matrix
 ## > invM == solve(x)
 ##      [,1] [,2] [,3]
