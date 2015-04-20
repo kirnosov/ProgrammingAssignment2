@@ -6,7 +6,7 @@
 ## In order to avoid multiple evaluations of the same matrix
 ## inverse, one can simply cache the result and use it
 ## if the initial matrix has remained unchanged.
-## The goal of this project is to create a function (cacheINV),
+## The goal of this project is to create a function (cacheSolve),
 ## which would be computing the inverse if it was not yet
 ## computed and caching it or retrieveing the inverse matrix
 ## from the cache.
@@ -80,26 +80,27 @@ cacheSolve <- function(x, ...) {
 ## In order to avoid possible 'good numbers', we will generate an initial
 ## matrix as a matrix of random elements:
 
+## > set.seed(1)
 ## > n=3
 ## > x<-matrix(runif(n*n), ncol=n) 
 ## > x
 ##           [,1]      [,2]      [,3]
-## [1,] 0.9351385 0.1828613 0.1617958
-## [2,] 0.6203263 0.5859340 0.5296237
-## [3,] 0.7268867 0.2416970 0.3212066
+## [1,] 0.2655087 0.9082078 0.9446753
+## [2,] 0.3721239 0.2016819 0.6607978
+## [3,] 0.5728534 0.8983897 0.6291140
 
-## (In other cases the elements mighht be different)
+## (In other cases the elements might be different)
 
-## Next, let us prepare a list of functions M using makeCacheMatrix()
+## Next, let us prepare a list of functions M using makeMatrix()
 ## > M <- makeCacheMatrix(x)
 
 ## And calculate the inverse of the initial matrix:
 ## > invM <- cacheSolve(M)
 ## > invM
-##           [,1]       [,2]        [,3]
-## [1,]  1.320040 -0.4304724  0.04486633
-## [2,]  4.072644  4.0077765 -8.65969192
-## [3,] -6.051762 -2.0415614  9.52785297
+##             [,1]      [,2]      [,3]
+## [1,]  -2.1820373  1.296397  1.914852
+## [2,]   0.6751799 -1.748934  0.823167
+## [3,]   1.0227284  1.317057 -1.329575
 
 ## Is this the correct answer?
 ## > invM == solve(x)
