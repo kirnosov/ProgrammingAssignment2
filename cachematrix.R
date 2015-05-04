@@ -57,7 +57,7 @@ cacheSolve <- function(x, ...) {
         # Was the inverse computed already?
         inv <- x$getinverse()  
         
-        # If the inverse matrix is not all-zeroes matrix,
+        # If the inverse matrix exists,
         # the answer is yes!
         if(!is.null(inv)) {
                 # In that case we just return cached inverse		
